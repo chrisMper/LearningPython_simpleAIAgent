@@ -25,13 +25,45 @@ uv init .
 uv add langgraph langchain python-dotenv langchain-openai langchain-core
 ```
 
-### 3. Environment Configuration
+### 3. Set up an API Key from OpenAI
 1. Create a `.env` file in the root directory.
 2. Add your OpenRouter API key:
    ```bash
    OPENAI_API_KEY=your_openrouter_key_here
    ```
 *(A `.env.example` file is provided as a template.)*
+3. Get the API key from openrouter.ai https://youtu.be/uCq40-sRrKE?si=IChR8y5msbUpAS8l
+
+### 4. Writing code - main.py
+
+4.1. Import
+    ```python
+    #langchain is a high level python library that allows us to create an AI agent
+    from langchain_core.messages import HumanMessage
+    #connect to openai and have the LLM running
+    from langchain_openai import ChatOpenAI
+    #to register the tool that our AI agent can use
+    from langchain.tools import tool
+    #langgraph is a complex library that allows us to create an AI agent
+    from langchain.agents import create_agent
+    #to load the API key from the .env file
+    from dotenv import load_dotenv
+
+    ```
+4.2. Load the API key and initialize the OpenAI LLM
+    ```python
+    load_dotenv()
+    ```
+
+4.3. Initialize the LLM with OpenRouter (optional but recommended for OpenRouter keys)
+    ```python
+    model = ChatOpenAI(
+        model="openai/gpt-4o-mini",
+        base_url="https://openrouter.ai/api/v1",
+        temperature=0
+    )
+    agent_executor = create_agent(model, tools)
+    ```
 
 ## 🚀 Running the Agent
 
