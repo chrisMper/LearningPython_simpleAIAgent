@@ -6,6 +6,21 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+@tool
+def calculator(a: float, b: float, operation: str) -> str:
+    # Specify the operation - a description of tool
+    """Performs arithmetic operations. Valid operations are: add, subtract, multiply, divide."""
+    print("Tool is being used")
+    if operation == "add":
+        return f"{a} + {b} = {a + b}"
+    elif operation == "subtract":
+        return f"{a} - {b} = {a - b}"
+    elif operation == "multiply":
+        return f"{a} * {b} = {a * b}"
+    elif operation == "divide":
+        return f"{a} / {b} = {a / b}"
+    return "Invalid operation."
+
 def main():
     # When using OpenRouter, you need to specify the base_url and a model name.
     model = ChatOpenAI(
@@ -14,7 +29,7 @@ def main():
         temperature=0
     ) 
 
-    tools = []
+    tools = [calculator]
 
     agent_executor = create_agent(model, tools) # create the agent using the new recommended function
 
