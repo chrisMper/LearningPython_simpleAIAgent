@@ -1,0 +1,17 @@
+# Environment variables
+.env
+
+# Python virtual environment
+.venv/
+__pycache__/
+*.py[cod]
+
+# IDE settings
+.vscode/
+.idea/
+
+#text files
+*.txt
+
+# Lock files (optional, but good to keep for reproducibility)
+# uv.lock is usually kept, but some prefer to ignore it
