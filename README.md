@@ -37,7 +37,7 @@ uv add langgraph langchain python-dotenv langchain-openai langchain-core
 ### 4. Writing code - main.py
 
 4.1. Import
-    ```python
+    ```
     #langchain is a high level python library that allows us to create an AI agent
     from langchain_core.messages import HumanMessage
     #connect to openai and have the LLM running
